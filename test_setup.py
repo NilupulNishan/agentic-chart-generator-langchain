@@ -1,12 +1,12 @@
-from utils.data_loader import load_and_prepare_data, make_schema_text
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-df = load_and_prepare_data("data/coffee_sales.csv")
+print("API Key loaded    :", bool(os.getenv("AZURE_OPENAI_API_KEY")))
+print("Endpoint loaded   :", bool(os.getenv("AZURE_OPENAI_ENDPOINT")))
+print("API Version loaded:", bool(os.getenv("AZURE_OPENAI_API_VERSION")))
+print("gpt-4o deployment :", os.getenv("AZURE_GPT4O_DEPLOYMENT"))
+print("gpt-4o-mini deploy:", os.getenv("AZURE_GPT4O_MINI_DEPLOYMENT"))
 
-print("Shape       :", df.shape)
-print("Columns     :", list(df.columns))
-print("Year values :", sorted(df["year"].dropna().unique().tolist()))
-print("Quarter vals:", sorted(df["quarter"].dropna().unique().tolist()))
-print("\nSchema text for LLM prompts:")
-print(make_schema_text(df))
-print("\nSample rows:")
-print(df.sample(3).to_string())
+import pandas, matplotlib, langgraph, openai
+print("\nAll packages imported successfully ✅")
