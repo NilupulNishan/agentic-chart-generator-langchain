@@ -4,6 +4,12 @@ import os
 import sys
 import logging
 import  argparse
+from dotenv import load_dotenv
+
+load_dotenv()
+# ── LangSmith tracing is auto-enabled via env vars ────────────────────────────
+# LANGCHAIN_TRACING_V2, LANGCHAIN_API_KEY, LANGCHAIN_PROJECT
+# No extra code needed — LangGraph detects these automatically
 
 # Logging setup 
 logging.basicConfig(
@@ -25,11 +31,11 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--dataset",
-        default="data/coffee_saled.csv",
-        help="Path to the input CSV file."
+        default="data/coffee_sales.csv",
+        help="Path to the input CSV file.",
     )
     parser.add_argument(
-        "--image-basename"
+        "--image-basename",
         default="chart",
         help="Base name for output images. e.g. 'chart' → outputs/chart_v1.png, chart_v2.png",
     )
